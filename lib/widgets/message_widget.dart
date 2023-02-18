@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class MessageWidget extends StatelessWidget {
   final bool isStart;
   final int score;
-  const MessageWidget({Key key, this.isStart, this.score}) : super(key: key);
+  const MessageWidget({Key? key, required this.isStart, required this.score})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(

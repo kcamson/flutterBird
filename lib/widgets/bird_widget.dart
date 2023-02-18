@@ -2,14 +2,14 @@ import 'package:flappyBird/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class BirdWidget extends StatefulWidget {
-  const BirdWidget({Key key}) : super(key: key);
+  const BirdWidget({Key? key}) : super(key: key);
   @override
   _BirdWidgetState createState() => _BirdWidgetState();
 }
 
 class _BirdWidgetState extends State<BirdWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {

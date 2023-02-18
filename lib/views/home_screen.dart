@@ -1,11 +1,9 @@
-import 'dart:html'; // For Web only
 import 'dart:math';
 
 import 'package:flappyBird/utils/utils.dart';
 import 'package:flappyBird/widgets/widget.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
   ScrollController _controller = ScrollController(keepScrollOffset: true);
   int currentPoint = 0;
   int currentOffset = 0;
@@ -33,9 +31,9 @@ class _HomeScreenState extends State<HomeScreen>
 
   FocusNode _spaceNode = FocusNode();
   SpeedFactor _speedFactor = SpeedFactor();
-  BirdPos _birdPos;
+  late BirdPos _birdPos;
   Random random = Random();
-  List<double> _ranNum;
+  late List<double> _ranNum;
 
   void setSpeed(double velocity, double speedGame) {
     _speedFactor.velocity = velocity;
@@ -112,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   double getSpeedPipe() =>
-      ((_speedFactor.speedGame) * currentOffset).toDouble();
+      ((_speedFactor.speedGame ?? 0) * currentOffset).toDouble();
 
   double onCollision() =>
       (startOffset + 25 + (52 + 100) * (currentPoint)).toDouble();
@@ -151,19 +149,19 @@ class _HomeScreenState extends State<HomeScreen>
       autofocus: true,
       onKey: (RawKeyEvent event) {
         /// For [Web]
-        if (event.logicalKey.keyId == KeyCode.SPACE &&
-            event.runtimeType == RawKeyDownEvent) {
-          if (isStart == false) {
-            setState(() {
-              isStart = true;
-            });
-          }
-          PlayAudio.playAudio(AssetName.audio.wingOGG);
-          isTap = true;
-          Future.delayed(Duration(milliseconds: 150), () {
-            isTap = false;
-          });
-        }
+        // if (event.logicalKey.keyId == KeyCode.SPACE &&
+        //     event.runtimeType == RawKeyDownEvent) {
+        //   if (isStart == false) {
+        //     setState(() {
+        //       isStart = true;
+        //     });
+        //   }
+        //   PlayAudio.playAudio(AssetName.audio.wingOGG);
+        //   isTap = true;
+        //   Future.delayed(Duration(milliseconds: 150), () {
+        //     isTap = false;
+        //   });
+        // }
 
         /// For [Windows] and [MacOS]
         // if (event.logicalKey == LogicalKeyboardKey.space &&

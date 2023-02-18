@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ScoreWidget extends StatelessWidget {
   final int score;
   final bool isStart;
-  const ScoreWidget({Key key, this.score, this.isStart}) : super(key: key);
+  const ScoreWidget({Key? key, required this.score, this.isStart = false}) : super(key: key);
 
   List<int> splitScore() {
     int subScore = score;

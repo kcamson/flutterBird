@@ -13,8 +13,8 @@ class AnimatedPositionedCustom extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   const AnimatedPositionedCustom({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.left,
     this.top,
     this.right,
@@ -22,8 +22,8 @@ class AnimatedPositionedCustom extends ImplicitlyAnimatedWidget {
     this.width,
     this.height,
     Curve curve = Curves.linear,
-    @required Duration duration,
-    VoidCallback onEnd,
+    required Duration duration,
+    VoidCallback? onEnd,
   })  : assert(left == null || right == null || width == null),
         assert(top == null || bottom == null || height == null),
         super(key: key, curve: curve, duration: duration, onEnd: onEnd);
@@ -32,18 +32,18 @@ class AnimatedPositionedCustom extends ImplicitlyAnimatedWidget {
   ///
   /// The [curve] and [duration] arguments must not be null.
   AnimatedPositionedCustom.fromRect({
-    Key key,
-    this.child,
-    Rect rect,
+    Key? key,
+    required this.child,
+    Rect? rect,
     Curve curve = Curves.linear,
-    @required Duration duration,
-    VoidCallback onEnd,
-  })  : left = rect.left,
-        top = rect.top,
-        width = rect.width,
-        height = rect.height,
-        right = null,
-        bottom = null,
+    required Duration duration,
+    required VoidCallback onEnd,
+  })  : left = rect?.left ?? 0,
+        top = rect?.top ?? 0,
+        width = rect?.width ?? 0,
+        height = rect?.height ?? 0,
+        right = 0,
+        bottom = 0,
         super(key: key, curve: curve, duration: duration, onEnd: onEnd);
 
   /// The widget below this widget in the tree.
@@ -52,28 +52,28 @@ class AnimatedPositionedCustom extends ImplicitlyAnimatedWidget {
   final Widget child;
 
   /// The offset of the child's left edge from the left of the stack.
-  final double left;
+  final double? left;
 
   /// The offset of the child's top edge from the top of the stack.
-  final double top;
+  final double? top;
 
   /// The offset of the child's right edge from the right of the stack.
-  final double right;
+  final double? right;
 
   /// The offset of the child's bottom edge from the bottom of the stack.
-  final double bottom;
+  final double? bottom;
 
   /// The child's width.
   ///
   /// Only two out of the three horizontal values ([left], [right], [width]) can
   /// be set. The third must be null.
-  final double width;
+  final double? width;
 
   /// The child's height.
   ///
   /// Only two out of the three vertical values ([top], [bottom], [height]) can
   /// be set. The third must be null.
-  final double height;
+  final double? height;
 
   @override
   _AnimatedPositionedCustomState createState() =>
@@ -93,39 +93,39 @@ class AnimatedPositionedCustom extends ImplicitlyAnimatedWidget {
 
 class _AnimatedPositionedCustomState
     extends AnimatedWidgetBaseState<AnimatedPositionedCustom> {
-  Tween<double> _left;
-  Tween<double> _top;
-  Tween<double> _right;
-  Tween<double> _bottom;
-  Tween<double> _width;
-  Tween<double> _height;
+  Tween<double>? _left;
+  Tween<double>? _top;
+  Tween<double>? _right;
+  Tween<double>? _bottom;
+  Tween<double>? _width;
+  Tween<double>? _height;
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
     _left = visitor(_left, widget.left,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
     _top = visitor(_top, widget.top,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
     _right = visitor(_right, widget.right,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
     _bottom = visitor(_bottom, widget.bottom,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
     _width = visitor(_width, widget.width,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
     _height = visitor(_height, widget.height,
-            (dynamic value) => Tween<double>(begin: value as double))
-        as Tween<double>;
+            (dynamic value) => Tween<double>(begin: (value ?? 0) as double))
+        as Tween<double>?;
   }
 
   @override
   Widget build(BuildContext context) {
     BirdPos _birdPos = Provider.of<BirdPos>(context);
-    _birdPos.chagePosNotListeners(_top?.evaluate(animation));
+    _birdPos.chagePosNotListeners(_top?.evaluate(animation) ?? 0);
 
     return Positioned(
       child: widget.child,
