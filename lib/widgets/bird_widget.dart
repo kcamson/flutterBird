@@ -38,22 +38,25 @@ class _BirdWidgetState extends State<BirdWidget>
           _animationController.forward();
         }
         if (_animationController.value <= 1 / 3) {
-          return Image.asset(
-            AssetName.sprites.yellowBird.getUpFlap(),
+          return Image.network(
+            'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                AssetName.sprites.yellowBird.getUpFlap(),
             height: 40,
             width: 40,
             fit: BoxFit.contain,
           );
         } else if (_animationController.value <= 2 / 3) {
-          return Image.asset(
-            AssetName.sprites.yellowBird.getMidFlap(),
+          return Image.network(
+            'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                AssetName.sprites.yellowBird.getMidFlap(),
             height: 40,
             width: 40,
             fit: BoxFit.contain,
           );
         } else {
-          return Image.asset(
-            AssetName.sprites.yellowBird.getDownFlap(),
+          return Image.network(
+            'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                AssetName.sprites.yellowBird.getDownFlap(),
             height: 40,
             width: 40,
             fit: BoxFit.contain,

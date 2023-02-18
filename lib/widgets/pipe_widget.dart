@@ -16,14 +16,16 @@ class PipeWidget extends StatelessWidget {
           children: [
             Transform.rotate(
               angle: pi,
-              child: Image.asset(
-                AssetName.sprites.greenPipe,
+              child: Image.network(
+                'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                    AssetName.sprites.greenPipe,
                 fit: BoxFit.fitHeight,
               ),
             ),
             SizedBox(height: 100),
-            Image.asset(
-              AssetName.sprites.greenPipe,
+            Image.network(
+              'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                  AssetName.sprites.greenPipe,
               fit: BoxFit.fitHeight,
             ),
           ],

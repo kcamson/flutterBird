@@ -15,8 +15,9 @@ class MessageWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            AssetName.sprites.message,
+          Image.network(
+            'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                AssetName.sprites.message,
           ),
           SizedBox(height: 30),
           ScoreWidget(

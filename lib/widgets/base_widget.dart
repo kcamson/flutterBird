@@ -14,8 +14,9 @@ class BaseWidget extends StatelessWidget {
         child: SizedBox(
           height: 112,
           width: MediaQuery.of(context).size.width * 2,
-          child: Image.asset(
-            AssetName.sprites.base,
+          child: Image.network(
+            'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                AssetName.sprites.base,
             fit: BoxFit.contain,
             repeat: ImageRepeat.repeatX,
             alignment: Alignment.centerLeft,

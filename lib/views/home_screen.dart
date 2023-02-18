@@ -200,8 +200,9 @@ class _HomeScreenState extends State<HomeScreen>
                   SizedBox(
                     height: height - 100,
                     width: width,
-                    child: Image.asset(
-                      AssetName.sprites.backgroundDay,
+                    child: Image.network(
+                      'https://raw.githubusercontent.com/kcamson/flutterBird/master/' +
+                          AssetName.sprites.backgroundDay,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
